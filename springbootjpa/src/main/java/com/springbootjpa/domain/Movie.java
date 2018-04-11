@@ -25,10 +25,10 @@ public class Movie implements Serializable {
 
   // 说明类中的属性对应表中的字段(字段名,长度,not null)
   //@Column(name = "movie_name",length = 100,nullable = false)
-  @Column
+  @Column(name = "name")
   private String name;
 
-  @Column
+  @Column(name = "price")
   private Double price;
 
   @Column(name = "action_time")

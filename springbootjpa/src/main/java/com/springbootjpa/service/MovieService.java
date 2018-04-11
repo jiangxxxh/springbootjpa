@@ -2,6 +2,7 @@ package com.springbootjpa.service;
 
 import com.springbootjpa.domain.Movie;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,4 +19,18 @@ public interface MovieService {
   List<Movie> findAll();
 
   Optional<Movie> findById(Integer id);
+
+  List<Movie> findByName(String name);
+
+  List<Movie> findByName2(String name);
+
+  List<Movie> findByNameLike(String name);
+
+  List<Movie> findByNameNotLike(String name);
+
+  List<Movie> findByNameNotLikeAndPrice(String name,Double price);
+
+  List<Movie> findByActionTimeBetween(Date beginDate, Date endDate);
+
+  List<Movie> findByNameLikeAndActionTimeBetween(String name,Date beginDate,Date endDate);
 }

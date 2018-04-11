@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -60,5 +61,45 @@ public class MovieServiceImpl implements MovieService {
   @Override
   public Optional<Movie> findById(Integer id) {
     return movieRepository.findById(id);
+  }
+
+  @Override
+  public List<Movie> findByName(String name){
+    return movieRepository.findByName(name);
+  }
+
+  /**
+   * 根据电影名查询
+   * @param name
+   * @return
+   */
+  @Override
+  public List<Movie> findByName2(String name) {
+    return movieRepository.findByName2(name);
+  }
+
+  @Override
+  public List<Movie> findByNameLike(String name) {
+    return movieRepository.findByNameLike(name);
+  }
+
+  @Override
+  public List<Movie> findByNameNotLike(String name) {
+    return movieRepository.findByNameNotLike(name);
+  }
+
+  @Override
+  public List<Movie> findByNameNotLikeAndPrice(String name, Double price) {
+    return movieRepository.findByNameNotLikeAndPrice(name,price);
+  }
+
+  @Override
+  public List<Movie> findByActionTimeBetween(Date beginDate, Date endDate) {
+    return movieRepository.findByActionTimeBetween(beginDate, endDate);
+  }
+
+  @Override
+  public List<Movie> findByNameLikeAndActionTimeBetween(String name, Date beginDate, Date endDate) {
+    return movieRepository.findByNameLikeAndActionTimeBetween(name, beginDate, endDate);
   }
 }
