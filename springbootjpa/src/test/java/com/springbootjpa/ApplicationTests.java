@@ -143,7 +143,45 @@ public class ApplicationTests {
         // 实例化一个 Pageable 对象
         Pageable pageable = PageRequest.of(pageNumber,pageSize,sort);
         Page<Movie> moviePage = movieService.findAll(pageable);
-        System.out.println("总页数"+moviePage.getTotalPages());
+        System.out.println("总页数："+moviePage.getTotalPages());
+        System.out.println("元素总数："+moviePage.getTotalElements());
+        // 获得里面的内容
+        List<Movie> list = moviePage.getContent();
+        for(Movie m:list){
+            System.out.println(m);
+        }
+    }
+
+    @Test
+    public void pageWithCondition() {
+
+        Example<Movie> movieExample = new Example<Movie>() {
+            @Override
+            public Movie getProbe() {
+                // 条件
+                Movie movie = new Movie();
+                movie.setName("头号玩家");
+                movie.setPrice(70d);
+                return movie;
+            }
+            @Override
+            public ExampleMatcher getMatcher() {
+                // matchingAny() 条件匹配任意一个即可查询出来
+                // matchingAll() 全部都要条件匹配上
+                return ExampleMatcher.matchingAny();
+            }
+        };
+
+        // 页码从 0 开始
+        Integer pageNumber = 0;
+        Integer pageSize = 2;
+        Sort sort = new Sort(Sort.Direction.DESC,"price");
+        // 实例化一个 Pageable 对象
+        Pageable pageable = PageRequest.of(pageNumber,pageSize,sort);
+        Page<Movie> moviePage = movieService.findAll(movieExample,pageable);
+
+        System.out.println("总页数："+moviePage.getTotalPages());
+        System.out.println("元素总数："+moviePage.getTotalElements());
         // 获得里面的内容
         List<Movie> list = moviePage.getContent();
         for(Movie m:list){
