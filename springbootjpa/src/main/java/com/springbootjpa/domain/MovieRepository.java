@@ -1,5 +1,7 @@
 package com.springbootjpa.domain;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -34,4 +36,7 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
     List<Movie> findByActionTimeBetween(Date beginDate,Date endDate);
 
     List<Movie> findByNameLikeAndActionTimeBetween(String name,Date beginDate,Date endDate);
+
+
+
 }

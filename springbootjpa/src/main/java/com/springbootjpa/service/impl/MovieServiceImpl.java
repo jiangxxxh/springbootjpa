@@ -4,6 +4,10 @@ import com.springbootjpa.domain.Movie;
 import com.springbootjpa.domain.MovieRepository;
 import com.springbootjpa.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -102,4 +106,17 @@ public class MovieServiceImpl implements MovieService {
   public List<Movie> findByNameLikeAndActionTimeBetween(String name, Date beginDate, Date endDate) {
     return movieRepository.findByNameLikeAndActionTimeBetween(name, beginDate, endDate);
   }
+
+  @Override
+  public Page<Movie> findAll(Pageable var) {
+    return movieRepository.findAll(var);
+  }
+
+
+  @Override
+  public List<Movie> findAll(Sort sort) {
+    return movieRepository.findAll(sort);
+  }
+
+
 }

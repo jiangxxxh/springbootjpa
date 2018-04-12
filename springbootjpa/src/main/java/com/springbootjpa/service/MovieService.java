@@ -1,6 +1,10 @@
 package com.springbootjpa.service;
 
 import com.springbootjpa.domain.Movie;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.Date;
 import java.util.List;
@@ -18,6 +22,8 @@ public interface MovieService {
 
   List<Movie> findAll();
 
+
+
   Optional<Movie> findById(Integer id);
 
   List<Movie> findByName(String name);
@@ -33,4 +39,12 @@ public interface MovieService {
   List<Movie> findByActionTimeBetween(Date beginDate, Date endDate);
 
   List<Movie> findByNameLikeAndActionTimeBetween(String name,Date beginDate,Date endDate);
+
+  // 分页+ 排序
+  Page<Movie> findAll(Pageable var1);
+
+  // 排序（排序方式、排序属性）
+  List<Movie> findAll(Sort sort);
+
+
 }
