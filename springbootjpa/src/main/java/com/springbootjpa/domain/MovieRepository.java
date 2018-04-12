@@ -37,6 +37,6 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
     List<Movie> findByNameLikeAndActionTimeBetween(String name,Date beginDate,Date endDate);
 
-
+    // List<Movie> findByNameLike(String name);
 
 }

@@ -46,5 +46,6 @@ public interface MovieService {
   // 排序（排序方式、排序属性）
   List<Movie> findAll(Sort sort);
 
-
+  // 待条件分页查询排序
+  Page<Movie> findAll(Example<Movie> var1, Pageable var2);
 }

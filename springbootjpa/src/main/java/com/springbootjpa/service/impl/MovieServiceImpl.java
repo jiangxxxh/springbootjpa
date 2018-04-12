@@ -118,5 +118,8 @@ public class MovieServiceImpl implements MovieService {
     return movieRepository.findAll(sort);
   }
 
-
+  @Override
+  public Page<Movie> findAll(Example<Movie> var1, Pageable var2) {
+    return movieRepository.findAll(var1,var2);
+  }
 }
